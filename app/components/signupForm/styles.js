@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     borderRadius: 6,
-    width: '100%'
+    width: '100%', 
+    paddingBottom: 30
   },
   title: {
     fontSize: 18, 

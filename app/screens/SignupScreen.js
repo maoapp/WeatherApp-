@@ -105,16 +105,16 @@ class SignupScreen extends React.Component {
       <ImageBackground style={styles.background} source={backgroundImage}>
         <View style={styles.container} >
         <Text style={styles.logo}>WEATHER APP</Text>
-        <SignupForm {...
-          {
-            ...user, 
-            onChangeField: this.onChangeField,
-            onSubmit: this.onSubmit, 
-            navigation, 
-            errors: formErrors,
-            formValid: formValid
-          }
-        }/>
+          <SignupForm {...
+            {
+              ...user, 
+              onChangeField: this.onChangeField,
+              onSubmit: this.onSubmit, 
+              navigation, 
+              errors: formErrors,
+              formValid: formValid
+            }
+          }/>
         </View>
       </ImageBackground>
     );
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    paddingVertical: 30,
     backgroundColor: theme.blue_opacity,
   },
   background: {

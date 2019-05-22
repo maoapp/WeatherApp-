@@ -4,7 +4,6 @@ import {
   Text, 
   TouchableOpacity, 
   ImageBackground, 
-  Image,
   TextInput, 
   StyleSheet 
 } from 'react-native';
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
-    paddingTop: 60,
+    paddingTop: 20,
     flex: 1,
     backgroundColor: theme.blue_opacity,
   },
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     textAlign: 'center',
     paddingBottom: 8,
-    marginVertical: 30,
+    marginVertical: 20,
     fontSize: 16
   },
   button: {
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
-    marginBottom: 60,
+    marginBottom: 15,
     width: '80%'
   },
   buttonText:{

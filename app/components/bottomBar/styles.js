@@ -14,10 +14,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     width: '100%', 
     alignItems: 'center',
-    zIndex: 10
+    zIndex: 10,
+    backgroundColor: theme.harder_gray
   },
   title: {
-    color: 'white', 
+    color: theme.blue_primary, 
     fontWeight: 'bold', 
     fontSize: 16
   }
