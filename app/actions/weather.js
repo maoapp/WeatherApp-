@@ -54,7 +54,10 @@ const fetchWeatherByCity = city => dispatch => {
   dispatch(weatherRequest());
   // const url = 'http://api.apixu.com/v1/current.json?key=336a7cd929c546c996131739192205&q=medellin';
   axios.get(url)
-    .then(res => dispatch(weatherRequestSuccesful(res.data)))
+    .then(res => {
+      dispatch(weatherRequestSuccesful(res.data));
+      dispatch(registerWeatherQuery(res.data))
+    })
     .catch(() => dispatch(weatherRequestFailure()))
 };
 
@@ -71,6 +74,11 @@ const weatherRequestSuccesful = (data, list) => ({
   payload: data,
   list
 });
+
+const registerWeatherQuery = weatherData => ({
+  type: REGISTER_WEATHER_QUERY,
+  payload: weatherData
+})
 
 export {
   fetchWeatherByCity,

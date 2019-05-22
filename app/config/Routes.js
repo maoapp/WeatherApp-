@@ -1,6 +1,7 @@
 import LoginScreen from '../containers/Login';
 import SignupScreen from '../containers/Signup';
 import WeatherScreen from '../containers/Weather';
+import HistorialScreen from '../containers/Historial';
 
 const Routes = {
   LoginScreen: {
@@ -13,6 +14,10 @@ const Routes = {
   },
   WeatherScreen: {
     screen: WeatherScreen,
+    navigationOptions: { header: null }
+  },
+  HistorialScreen: {
+    screen: HistorialScreen,
     navigationOptions: { header: null }
   }
 }

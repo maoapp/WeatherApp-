@@ -1,10 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import PropTypes from 'prop-types';
+
+// @styles
+import styles from './styles';
 
 const WeatherInfo = ({weather}) => {
   const { location, current } = weather;
   const { name, region, country, localtime } = location;
-  const { temp_c, condition, humidity, wind_degree, cloud } = current;
+  const { 
+    cloud,
+    condition,
+    gust_kph,
+    humidity,
+    precip_mm , 
+    temp_c,  
+    uv,
+    wind_degree,
+    vis_km
+  } = current;
   const { text, icon } = condition;
   const urlImage = `https:${icon}`;
 
@@ -39,7 +53,25 @@ const WeatherInfo = ({weather}) => {
           <Text style={styles.regularText}>{cloud} %</Text>
         </View>
       </View>
-      <View style={styles.description}>
+      <View style={styles.flexRow}>
+        <View style={styles.conditions}>
+          <Text style={styles.conditionsType}>Precip</Text>
+          <Text style={styles.regularText}>{precip_mm} mm</Text>
+        </View>
+        <View style={styles.conditions}>
+          <Text style={styles.conditionsType}>Vis</Text>
+          <Text style={styles.regularText}>{vis_km} Km</Text>
+        </View>
+        <View style={styles.conditions}>
+          <Text style={styles.conditionsType}>uv</Text>
+          <Text style={styles.regularText}>{uv}</Text>
+        </View>
+        <View style={styles.conditions}>
+          <Text style={styles.conditionsType}>Gust</Text>
+          <Text style={styles.regularText}>{gust_kph} Kph</Text>
+        </View>
+      </View>
+      <View style={{alignSelf: 'center'}}>
         <Text style={styles.conditionsType}>{text}</Text>
         <Image 
           source={{uri: urlImage}} style={styles.picture}
@@ -49,38 +81,8 @@ const WeatherInfo = ({weather}) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width: '80%'
-  },
-  timeText: {
-    color: '#e9e9e8',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  regularText: {
-    color: '#e9e9e8',
-    fontSize: 14,
-    fontWeight: 'bold'
-  },
-  flexRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15
-  },
-  description: {
-    marginTop: 30
-  },
-  picture: {
-    width: 100,
-    height: 100,
-    marginTop: 15,
-  },
-  conditionsType: {
-    fontWeight: 'bold',
-    color: 'white',
-    fontSize: 18
-  }
-})
+WeatherInfo.propTypes = {
+  weather: PropTypes.object
+};
+
 export default WeatherInfo;

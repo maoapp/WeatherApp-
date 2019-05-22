@@ -1,11 +1,15 @@
 // @vendors
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+
+// @styles
+import styles from './styles';
 
 // @components
 import ErrorsSummary from '../errorsSummary/ErrorsSummary';
 
-const LoginForm = (
+const SignupForm = (
   {
     confirmPassword,
     email, 
@@ -89,56 +93,18 @@ const LoginForm = (
   </View>
 );
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    borderRadius: 6,
-    width: '100%'
-  },
-  title: {
-    fontSize: 18, 
-    color: '#e4e9e9',
-    textAlign: 'center',
-    marginBottom: 20
-  },
-  formGroup: {
-    marginBottom: 15
-  },
-  label: {
-    color: 'white',
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  input: {
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 4,
-    color: 'white',
-    fontSize: 16,
-    width: '100%',
-    height: 40,
-    padding: 8
-  },
-  button: {
-    paddingVertical: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 6,
-    marginBottom: 15
-  },
-  disabledButton: {
-    backgroundColor: 'lightgray'
-  },
-  activateButton: {
-    backgroundColor: '#304052'
-  },
-  buttonText:{
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold'
-  }
-})
+SignupForm.propTypes = {
+  confirmPassword: PropTypes.string, 
+  email: PropTypes.string,
+  errors: PropTypes.object,
+  errorLogin: PropTypes.bool,
+  firstName: PropTypes.string,
+  formValid: PropTypes.bool,  
+  password: PropTypes.string,
+  lastName: PropTypes.string,
+  onChangeField: PropTypes.func,
+  onSubmit: PropTypes.func
+};
 
-export default LoginForm; 
-
+export default SignupForm; 
         

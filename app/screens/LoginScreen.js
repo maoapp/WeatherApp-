@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
+// @components
 import LoginForm from '../components/loginForm/LoginForm';
+
+// @styles
+import theme from '../styles/theme';
 
 // @assets
 const backgroundImage = require('../assets/jpg/backgroundLogin.jpg');
@@ -37,18 +42,14 @@ class LoginScreen extends React.Component {
 
   onSubmit() {
     const { user } = this.state;
-    const { email, password } = user;
-
-      const { loginRequest } = this.props;
-      loginRequest(user);
-
+    const { loginRequest } = this.props;
     
+    loginRequest(user);
   }
 
   render() {
     const { user } = this.state;
     const { navigation, errorLogin } = this.props;
-    console.log(this.props, 'propiedades')
 
     return(
       <ImageBackground style={styles.background} source={backgroundImage}>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    backgroundColor: "rgba(42, 40, 68, 0.9)",
+    backgroundColor: theme.blue_opacity,
   },
   background: {
     width: '100%', 
@@ -83,8 +84,14 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 20,
-    color: 'white'
+    color: theme.white
   }
 });
+
+LoginScreen.propTypes = {
+  user: PropTypes.object,
+  loginRequest: PropTypes.func,
+  errorLogin: PropTypes.bool
+};
 
 export default LoginScreen;

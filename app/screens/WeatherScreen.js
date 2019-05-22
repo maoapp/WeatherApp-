@@ -4,12 +4,18 @@ import {
   Text, 
   TouchableOpacity, 
   ImageBackground, 
+  Image,
   TextInput, 
   StyleSheet 
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 //@components
 import WeatherInfo from '../components/weatherInfo/WeatherInfo';
+import BottomBar from '../components/bottomBar/BottomBar';
+
+// @styles
+import theme from '../styles/theme';
 
 // @assets
 const backgroundImage = require('../assets/jpg/home.jpg');
@@ -35,21 +41,20 @@ class weatherScreen extends React.Component {
     const { fetchWeatherByCity } = this.props;
 
     fetchWeatherByCity(city);
+    this.setState({city: ''})
   }
 
   render() {
     const { city } = this.state;
-    const { weather } = this.props;
-
+    const { weather, navigation } = this.props;
     let content = null;
-    console.log(weather, 'propeidades');
 
     if(weather.data) {
       content = <WeatherInfo weather={weather.data}/>
     }
 
     if(weather.failure) {
-      content = <Text>The city has no been found</Text>;
+      content = <Text style={styles.errorMessage}>The city has no been found</Text>;
     }
 
     return (
@@ -72,6 +77,7 @@ class weatherScreen extends React.Component {
             </TouchableOpacity>
             {content}
         </View>
+        <BottomBar title="SEARCH HISTORY" navigation={navigation} screen="HistorialScreen"/>
       </ImageBackground>
     )
   }
@@ -82,9 +88,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     paddingTop: 60,
-    paddingHorizontal: 15,
     flex: 1,
-    backgroundColor: "rgba(42, 40, 68, 0.9)",
+    backgroundColor: theme.blue_opacity,
   },
   background: {
     width: '100%', 
@@ -92,12 +97,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color: 'white'
+    color: theme.white
   },
   input: {
-    color: 'white',
+    color: theme.white,
     width: '80%',
-    borderBottomColor: 'white',
+    borderBottomColor: theme.white,
     borderBottomWidth: 1,
     textAlign: 'center',
     paddingBottom: 8,
@@ -113,16 +118,25 @@ const styles = StyleSheet.create({
     width: '80%'
   },
   buttonText:{
-    color: 'white',
+    color: theme.white,
     fontSize: 16,
     fontWeight: 'bold'
   },
   disabledButton: {
-    backgroundColor: 'lightgray'
+    backgroundColor: theme.harder_gray
   },
   activeButton: {
-    backgroundColor: '#304052'
+    backgroundColor: theme.blue_primary
+  },
+  errorMessage: {
+    color: theme.alert_red,
+    fontWeight: 'bold',
+    fontSize: 20
   }
 });
+
+weatherScreen.propTypes = {
+  weather: PropTypes.object
+};
 
 export default weatherScreen; 

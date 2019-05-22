@@ -25,7 +25,7 @@ const initialState = {
     successful: false,
     failure: false
   },
-  registerOfQueries: []
+  historial: []
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -47,7 +47,8 @@ const weatherReducer = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          isLogged: true
+          isLogged: true,
+          errorLogin: false
         }
       }
     }
@@ -89,6 +90,15 @@ const weatherReducer = (state = initialState, action) => {
           isFetching: false,
           failure: true
         }
+      }
+    }
+    case REGISTER_WEATHER_QUERY: {
+      return {
+        ...state,
+        historial: [
+          ...state.historial,
+          action.payload
+        ]
       }
     }
     default:

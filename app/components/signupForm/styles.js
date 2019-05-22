@@ -9,12 +9,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     width: '100%'
   },
-  error: {
-    color: theme.alert_red,
-    fontSize: 16,
-    fontWeight: 'bold',
-    paddingBottom: 15
-  },
   title: {
     fontSize: 18, 
     color: theme.sticker_grey,
@@ -33,7 +27,7 @@ const styles = StyleSheet.create({
     borderColor: theme.white,
     borderWidth: 1,
     borderRadius: 4,
-    color: 'white',
+    color: theme.white,
     fontSize: 16,
     width: '100%',
     height: 40,
@@ -49,7 +43,7 @@ const styles = StyleSheet.create({
   disabledButton: {
     backgroundColor: theme.harder_gray
   },
-  activeButton: {
+  activateButton: {
     backgroundColor: theme.blue_primary
   },
   buttonText:{

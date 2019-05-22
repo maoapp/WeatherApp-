@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
+// @components
 import SignupForm from '../components/signupForm/SignupForm';
 
+// @styles
+import theme from '../styles/theme';
+
 // @assets
-const backgroundImage = require('../assets/jpg/backgroundLogin.jpg');
+const backgroundImage = require('../assets/jpg/register.jpg');
 
 class SignupScreen extends React.Component {
   constructor() {
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    backgroundColor: "rgba(42, 40, 68, 0.9)",
+    backgroundColor: theme.blue_opacity,
   },
   background: {
     width: '100%', 
@@ -130,8 +135,12 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 20,
-    color: 'white'
+    color: theme.white
   }
 });
+
+SignupScreen.propTypes = {
+  signup: PropTypes.func
+};
 
 export default SignupScreen;
