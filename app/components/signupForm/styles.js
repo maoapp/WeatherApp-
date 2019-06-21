@@ -1,56 +1,74 @@
 import { StyleSheet } from 'react-native';
 
-// @THEME
+// @Theme
 import theme from '../../styles/theme';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingHorizontal: 40,
     borderRadius: 6,
     width: '100%', 
-    paddingBottom: 30
+    paddingBottom: 30,
+    justifyContent: 'center'
   },
   title: {
+    marginVertical: 10,
     fontSize: 18, 
-    color: theme.sticker_grey,
+    color: theme.white,
+    textAlign: 'center'
+  },
+  textIntro: {
+    marginVertical: 10,
+    color: theme.blue_primary,
     textAlign: 'center',
-    marginBottom: 20
+    fontWeight: 'bold'
   },
   formGroup: {
     marginBottom: 15
   },
   label: {
-    color: theme.white,
-    fontSize: 16,
+    color: theme.blue_primary,
+    fontWeight: 'bold',
+    fontSize: 14,
     marginBottom: 5,
   },
   input: {
-    borderColor: theme.white,
+    borderColor: theme.blue_primary,
     borderWidth: 1,
-    borderRadius: 4,
-    color: theme.white,
-    fontSize: 16,
+    borderRadius: 30,
+    color: 'white',
+    fontSize: 14,
     width: '100%',
     height: 40,
-    padding: 8
+    padding: 12
   },
   button: {
     paddingVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 30,
     marginBottom: 15
   },
   disabledButton: {
-    backgroundColor: theme.harder_gray
+    backgroundColor: theme.harder_gray,
   },
   activateButton: {
-    backgroundColor: theme.blue_primary
+    backgroundColor: theme.orange_primary
   },
   buttonText:{
     color: theme.white,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold'
+  },
+  infoBottom: {
+    color: theme.blue_primary, 
+    marginBottom: 10, 
+    textAlign: 'center'
+  },
+  alertMessage: {
+    color: theme.alert_red, 
+    marginTop: 10, 
+    textAlign: 'center'
   }
 });
 

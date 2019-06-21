@@ -1,82 +1,91 @@
 // @vendors
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  KeyboardAvoidingView, 
+  Platform
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 // @styles
 import styles from './styles';
 
-// @components
-import ErrorsSummary from '../errorsSummary/ErrorsSummary';
-
+const animateKeyboard = Platform.OS === 'ios' ? 'padding' : '';
 const SignupForm = (
   {
-    confirmPassword,
     email, 
-    errors,
+    emailIsValid,
     firstName, 
     formValid,
+    githubUser,
+    id,
     lastName, 
-    password, 
     onChangeField,
-    onSubmit,
-    navigation
+    onSubmit
   }) => (
-   <ScrollView style={styles.container}>
-      <Text style={styles.title}>SIGN UP</Text>
+   <KeyboardAvoidingView behavior={animateKeyboard} style={styles.container}>
+      <Text style={styles.title}>Sign up</Text>
+      <Text style={styles.textIntro}>Who are you?</Text>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>*First Name:</Text>
         <TextInput
           style={styles.input}
           value={firstName}
-          onChangeText={(text) => onChangeField(text, 'firstName')}
+          onChangeText={text => onChangeField(text, 'firstName')}
           underlineColorAndroid="transparent"
           selectionColor="white"
+          placeholder="First Name"
+          placeholderTextColor="white"
         />
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>*Last Name:</Text>
         <TextInput
           style={styles.input}
           value={lastName}
-          onChangeText={(text) => onChangeField(text, 'lastName')}
+          onChangeText={text => onChangeField(text, 'lastName')}
           underlineColorAndroid="transparent"
           selectionColor="white"
+          placeholder="Last Name"
+          placeholderTextColor="white"
         />
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>*Email:</Text>
+        <TextInput
+          style={styles.input}
+          value={id}
+          onChangeText={text => onChangeField(text, 'id')}
+          underlineColorAndroid="transparent"
+          selectionColor="white"
+          placeholder="Id"
+          placeholderTextColor="white"
+        />
+      </View>
+      <View style={styles.formGroup}>
         <TextInput
           style={styles.input}
           value={email}
-          onChangeText={(text) => onChangeField(text, 'email')}
+          onChangeText={text => onChangeField(text, 'email')}
           underlineColorAndroid="transparent"
           selectionColor="white"
+          placeholder="Email"
+          placeholderTextColor="white"
         />
+        {!emailIsValid && <Text style={styles.alertMessage}>Email is not valid</Text>}
       </View>
       <View style={styles.formGroup}>
-        <Text style={styles.label}>*Password:</Text>
         <TextInput
           style={styles.input}
-          value={password}
-          onChangeText={(text) => onChangeField(text, 'password')}
+          value={githubUser}
+          onChangeText={text => onChangeField(text, 'githubUser')}
           underlineColorAndroid="transparent"
           selectionColor="white"
-          secureTextEntry={true}
+          placeholder="Github user"
+          placeholderTextColor="white"
         />
       </View>
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>*Confirm Password:</Text>
-        <TextInput
-          style={styles.input}
-          value={confirmPassword}
-          onChangeText={(text) => onChangeField(text, 'confirmPassword')}
-          underlineColorAndroid="transparent"
-          selectionColor="white"
-          secureTextEntry={true}
-        />
-      </View>
-      <ErrorsSummary {...{errors}}/>
+      {!formValid && <Text style={styles.infoBottom}>All fields are required</Text>}
       <TouchableOpacity 
         style={[styles.button, formValid ? styles.activateButton : styles.disabledButton]} 
         onPress={() => onSubmit()}
@@ -84,24 +93,16 @@ const SignupForm = (
       >
         <Text style={styles.buttonText}>SIGNUP</Text>
       </TouchableOpacity>  
-      <TouchableOpacity 
-        style={[styles.button, styles.activateButton]} 
-        onPress={() => navigation.navigate('LoginScreen')}
-      >
-        <Text style={styles.buttonText}>CANCEL</Text>
-      </TouchableOpacity>
-   </ScrollView> 
+   </KeyboardAvoidingView> 
   
 );
 
 SignupForm.propTypes = {
-  confirmPassword: PropTypes.string, 
   email: PropTypes.string,
-  errors: PropTypes.object,
-  errorLogin: PropTypes.bool,
   firstName: PropTypes.string,
+  githubUser: PropTypes.string, 
+  id: PropTypes.string,
   formValid: PropTypes.bool,  
-  password: PropTypes.string,
   lastName: PropTypes.string,
   onChangeField: PropTypes.func,
   onSubmit: PropTypes.func

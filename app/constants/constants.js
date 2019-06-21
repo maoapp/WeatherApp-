@@ -1,7 +1,7 @@
-const API_KEY = '336a7cd929c546c996131739192205&';
-const API_URL = 'http://api.apixu.com/v1/current.json';
+const API_URL = 'https://api.github.com/users';
+const LIMIT_REPOS = 5
 
 export {
-  API_KEY,
-  API_URL
+  API_URL,
+  LIMIT_REPOS
 };

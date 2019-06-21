@@ -1,23 +1,18 @@
-import LoginScreen from '../containers/Login';
+import HomeScreen from '../screens/HomeScreen';
 import SignupScreen from '../containers/Signup';
-import WeatherScreen from '../containers/Weather';
-import HistorialScreen from '../containers/Historial';
+import UserScreen from '../containers/User';
 
 const Routes = {
-  LoginScreen: {
-    screen: LoginScreen,
+  HomeScreen: {
+    screen: HomeScreen,
     navigationOptions: { header: null }
   },
   SignupScreen: {
     screen: SignupScreen,
     navigationOptions: { header: null }
   },
-  WeatherScreen: {
-    screen: WeatherScreen,
-    navigationOptions: { header: null }
-  },
-  HistorialScreen: {
-    screen: HistorialScreen,
+  UserScreen: {
+    screen: UserScreen,
     navigationOptions: { header: null }
   }
 }

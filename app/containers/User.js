@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions/githubRepos';
 
-import SignupScreen from '../screens/SignupScreen';
+import UserScreen from '../screens/UserScreen';
 
 const mapStateToProps = ({ gitHubReducer }) => {
 	return {
-    user: gitHubReducer.user
+    user: gitHubReducer.user,
+    repos: gitHubReducer.repos
 	};
 };
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(SignupScreen);
+)(UserScreen);

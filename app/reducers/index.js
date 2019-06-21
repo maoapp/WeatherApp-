@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import weatherReducer from './weatherReducer';
+import gitHubReducer from './gitHubReducer';
 
 const AppReducer = combineReducers({
-  weatherReducer
+  gitHubReducer
 });
 
 export default AppReducer;
